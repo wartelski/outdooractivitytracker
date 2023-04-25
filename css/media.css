@@ -1,0 +1,66 @@
+@media (max-width: 990px) {
+  html {
+    font-size: 50%;
+  }
+
+  .sidebar {
+    width: 45%;
+    flex-basis: 45%;
+  }
+
+  .header_logo > .logo {
+    font-size: 3rem;
+  }
+
+  .logo-heading {
+    font-size: 2.9rem;
+  }
+
+  .form__input {
+    font-size: 1.5rem;
+  }
+
+  .form .form__btn {
+    font-size: 1.5rem;
+    padding: 0.2rem 0.5rem;
+  }
+
+  .leaflet-popup .leaflet-popup-content {
+    font-size: 2.2rem;
+  }
+}
+
+@media (max-width: 750px) {
+  .wrapper {
+    flex-direction: column;
+  }
+
+  .sidebar {
+    width: 100%;
+    flex-basis: auto;
+    max-width: 100%;
+    height: auto;
+    max-height: 47%;
+    border-radius: 0.5rem;
+    margin-bottom: 2rem;
+  }
+
+  .menu__option span {
+    font-size: 2rem;
+  }
+
+  #map {
+    border-radius: 0.5rem;
+    border: 1rem solid var(--color-dark--1);
+    height: auto;
+  }
+
+  .leaflet-popup .leaflet-popup-content {
+    font-size: 1.5rem;
+    margin: 9px 13px 9px 13px;
+  }
+
+  .workout {
+    height: 16rem;
+  }
+}

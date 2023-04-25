@@ -1,0 +1,605 @@
+:root {
+  --color-brand--1: #ffb545;
+  --color-brand--2: #00c46a;
+
+  --color-error: #c41414;
+  --color-ok: #17ca3d;
+
+  --color-dark--1: #2d3439;
+  --color-dark--2: #42484d;
+  --color-dark--3: #181819;
+  --color-light--1: #aaa;
+  --color-light--2: #ececec;
+  --color-light--3: rgb(214, 222, 224);
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: inherit;
+}
+
+html {
+  font-size: 62.5%;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Source Sans Pro', sans-serif;
+  color: var(--color-light--2);
+  font-size: 1.6rem;
+  line-height: 1.6;
+  height: 100vh;
+  overscroll-behavior-y: none;
+  background-color: var(--color-dark--3);
+  padding: 2.5rem;
+  display: flex;
+}
+
+.wrapper {
+  display: flex;
+  height: 100%;
+  width: 100%;
+}
+
+/*--------- Sidebar ---------*/
+.sidebar {
+  max-width: 55rem;
+  flex-basis: 35%;
+  background-color: var(--color-dark--1);
+  padding: 2.5rem;
+  display: flex;
+  flex-direction: column;
+  border-top-left-radius: 0.5rem;
+  border-bottom-left-radius: 0.5rem;
+}
+
+.sidebar > *:not(:last-child) {
+  margin-bottom: 2rem;
+}
+
+.header_logo {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 5rem;
+}
+
+.header_logo > .logo {
+  font-size: 4.5rem;
+  margin-right: 1.5rem;
+}
+
+.logo-heading {
+  font-family: 'Rubik Distressed', cursive;
+  font-size: 3.5rem;
+}
+
+.logo-heading span {
+  color: #d34e24;
+}
+
+.workouts {
+  list-style: none;
+  position: relative;
+  flex: 1;
+  overflow-y: scroll;
+  overflow-x: hidden;
+}
+
+.workouts::-webkit-scrollbar {
+  width: 0;
+}
+
+.workout {
+  background-color: #45425a;
+  border-radius: 0.5rem;
+  padding: 2rem;
+  margin-bottom: 2rem;
+  position: relative;
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 1.4rem 1rem;
+}
+
+.workout--running {
+  border-left: 0.5rem solid #d34e24;
+}
+.workout--cycling {
+  border-left: 0.5rem solid #0892a5;
+}
+
+.workout__title {
+  font-size: 1.9rem;
+  font-weight: 400;
+  grid-column: 1 / -1;
+}
+
+.workout__details {
+  text-align: center;
+}
+
+.workout__icon {
+  font-size: 2rem;
+  display: block;
+}
+
+.workout__value {
+  font-size: 1.5rem;
+  font-weight: 400;
+}
+
+.workout__unit {
+  font-size: 1.2rem;
+  color: var(--color-light--1);
+  text-transform: uppercase;
+  font-weight: 600;
+}
+
+/*-------- Editing/Deleting items from the list --------*/
+.workout_list_add-actions {
+  position: absolute;
+  right: 1.8rem;
+  top: 2rem;
+}
+
+.workout_list_add-actions .workout_list_add-actions__act {
+  color: var(--color-light--1);
+}
+
+.workout_list_add-actions .workout_list_add-actions__act:hover {
+  color: var(--color-light--2);
+  cursor: pointer;
+}
+
+.workout_list_add-actions__icons {
+  width: 1rem;
+  height: 1rem;
+  font-size: 2.2rem;
+  transition: all 0.2s;
+}
+
+.workout__list-options {
+  list-style: none;
+  position: absolute;
+  top: 100%;
+  right: 0;
+  background-color: #fff;
+  border-radius: 0.5rem;
+  min-width: 18rem;
+  padding: 0.5rem 0;
+  z-index: 800;
+  box-shadow: 0rem 1rem 1rem -0.5rem rgba(0 0 0 / 50%);
+}
+
+.workout__list-options--hidden {
+  display: none;
+}
+
+.workout__list-option:link,
+.workout__list-option:visited {
+  display: block;
+  text-decoration: none;
+  padding: 0.5rem 1rem;
+  color: var(--color-dark--2);
+  transition: all 0.2s;
+}
+
+.workout__list-option:hover,
+.workout__list-option:active {
+  color: var(--color-light--1);
+}
+
+.workout__list-option .workout__list-icons {
+  color: var(--color-dark--2);
+}
+
+.workout__list-option:hover .workout__list-icons {
+  color: var(--color-light--1);
+}
+
+/*-------- End of "Editing/Deleting items from the list" --------*/
+
+.form {
+  background-color: var(--color-dark--2);
+  width: 100%;
+  border-radius: 0.5rem;
+  padding: 1.5rem;
+  margin-bottom: 2rem;
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 2rem;
+  height: 11rem;
+  position: relative;
+  transition: all 0.5s, transform 1ms;
+}
+
+.form.hidden {
+  transform: translateY(-30rem);
+  height: 0;
+  padding: 0 2.25rem;
+  margin: 0;
+  opacity: 0;
+}
+
+.form input[type='submit'] {
+  display: none;
+}
+
+.form__row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.form__row--hidden {
+  display: none;
+}
+
+.form__label {
+  flex: 0 0 50%;
+  font-size: 1.5rem;
+  font-weight: 400;
+}
+
+.form__input {
+  min-width: 9rem;
+  width: 50%;
+  padding: 0.7rem;
+  font-family: 'Source Sans Pro', sans-serif;
+  font-weight: 600;
+  border: none;
+  border-radius: 0.5rem;
+  background-color: var(--color-light--3);
+  transition: all 0.2s ease-in;
+}
+
+.form__input:focus {
+  outline: none;
+  background-color: #fff;
+}
+
+.form .form__btn {
+  text-transform: uppercase;
+  font-weight: 500;
+  border: 1px solid var(--color-light--3);
+  border-radius: 0.5rem;
+  background-color: transparent;
+  color: var(--color-dark--2);
+  padding: 0.3rem 0.7rem;
+  display: flex;
+  align-items: center;
+  transition: opacity 0.3s;
+  cursor: pointer;
+}
+
+.form .form__btn:hover {
+  opacity: 0.7;
+}
+
+.copyright {
+  margin-top: auto;
+  font-size: 1.3rem;
+  text-align: center;
+  color: var(--color-light--1);
+}
+
+.linkedIn-link {
+  color: var(--color-light--1);
+  transition: all 0.2s;
+}
+
+/*---------- Edit-form ---------------*/
+.workout.editing {
+  transform: translateX(100%);
+}
+
+.form-edit {
+  background-color: #fff;
+  color: var(--color-dark--2);
+  grid-template-columns: repeat(4, 1fr);
+  grid-gap: 1rem;
+  transform: translateX(-106%);
+  transition: transform 0.3s;
+  position: absolute;
+  height: 15.1rem;
+}
+
+.form-edit .form__row {
+  flex-direction: column;
+  justify-content: flex-start;
+}
+
+.form-edit .form__row .form__label {
+  margin-right: 0;
+  margin-bottom: 0.3rem;
+}
+
+.form-edit .form__row .form__input {
+  width: 100%;
+  min-width: auto;
+}
+
+.form-edit .form_btn-save {
+  grid-column: 1 / 3;
+  justify-self: end;
+}
+
+.form-edit .form_btn-cancel {
+  grid-column: 3 / -1;
+  justify-self: start;
+}
+
+.form-editing--hidden {
+  display: none;
+}
+
+.form-edit.animated {
+  transform: translateX(0);
+}
+
+.form__btn-icon {
+  width: 1.7rem;
+  margin-right: 0.3rem;
+}
+
+.form__btn-icon--save {
+  color: #17ca3d;
+}
+
+.form__btn-icon--cancel {
+  color: #c41414;
+}
+
+/*---------- End of Edit-form --------*/
+
+/*--------- Map --------*/
+#map {
+  flex: 1;
+  height: 100%;
+  background-color: var(--color-light--1);
+  border-top-right-radius: 0.5rem;
+  border-bottom-right-radius: 0.5rem;
+}
+
+.leaflet-popup .leaflet-popup-content-wrapper {
+  background-color: var(--color-dark--1);
+  color: var(--color-light--2);
+  border-radius: 0.5rem;
+  padding-right: 0.6rem;
+  text-align: center;
+}
+
+.leaflet-popup .leaflet-popup-content {
+  font-size: 1.8rem;
+  font-family: 'Patrick Hand', cursive;
+}
+
+.leaflet-popup .leaflet-popup-tip {
+  background-color: var(--color-dark--1);
+}
+
+.running-popup .leaflet-popup-content-wrapper {
+  border-left: 0.5rem solid #d34e24;
+}
+.cycling-popup .leaflet-popup-content-wrapper {
+  border-left: 0.5rem solid #0892a5;
+}
+
+/*------ Menu ------*/
+.menu {
+  padding: 2rem;
+}
+
+.menu .menu__options {
+  list-style: none;
+  display: flex;
+  justify-content: space-between;
+}
+
+.menu .menu__link:link,
+.menu .menu__link:visited {
+  text-decoration: none;
+  color: inherit;
+  transition: all 0.2s;
+  display: flex;
+  align-items: center;
+}
+
+menu .menu__link:hover,
+.menu .menu__link:active {
+  color: var(--color-light--1);
+}
+
+.menu .menu__link.disabled {
+  pointer-events: none;
+  opacity: 0.5;
+}
+
+.menu__option--show.disabled {
+  pointer-events: none;
+  opacity: 0.5;
+}
+
+.menu__option--sort.disabled {
+  pointer-events: none;
+  opacity: 0.5;
+}
+
+.menu .menu__link.active {
+  color: var(--color-brand--2);
+  font-weight: 500;
+}
+
+.menu .menu__link .menu__icon {
+  color: var(--color-light--2);
+  height: 2rem;
+  margin-right: 1rem;
+  transition: all 0.2s;
+}
+
+.menu .menu__link:hover .menu__icon {
+  color: var(--color-light--1);
+}
+
+.menu .menu__link.active .menu__icon {
+  color: var(--color-brand--2);
+}
+
+.menu__option--sort {
+  position: relative;
+}
+
+.menu__menu-sort {
+  position: absolute;
+  top: calc(100% + 1rem);
+  right: 0;
+  background-color: #fff;
+  border-radius: 0.5rem;
+  min-width: 18rem;
+  padding: 0.5rem 0;
+  z-index: 1000;
+  box-shadow: 0rem 1rem 1rem -0.5rem rgba(0 0 0 / 50%);
+}
+
+.menu__menu-sort--hidden {
+  display: none;
+}
+
+.menu__menu-sort-options {
+  list-style: none;
+}
+
+.menu__menu-sort-option:link,
+.menu__menu-sort-option:visited {
+  text-decoration: none;
+  display: block;
+  padding: 0.5rem 1rem;
+  color: var(--color-dark--2);
+  font-weight: 400;
+  transition: all 0.2s;
+}
+
+.menu__menu-sort-option:hover,
+.menu__menu-sort-option:active {
+  color: var(--color-light--1);
+}
+
+.menu__menu-sort-icon {
+  color: var(--color-dark--2);
+  width: 2rem;
+  height: 2rem;
+  margin-right: 0.5rem;
+  transition: all 0.2s;
+  vertical-align: sub;
+}
+
+.menu__menu-sort-option:hover .menu__menu-sort-icon {
+  color: var(--color-light--1);
+}
+/*------- Delete Confirmation ------*/
+.dlt-container {
+  padding: 2rem;
+  background-color: var(--color-dark--2);
+  border-radius: 0.5rem;
+  border-left: 0.7rem solid var(--color-error);
+  text-align: center;
+  transition: all 0.3s, transform 1ms;
+  height: 10rem;
+}
+
+.delete-confirmation__title {
+  font-weight: 600;
+  margin-bottom: 1rem;
+}
+
+.dlt-container.delete-confirmation--hidden {
+  opacity: 0;
+  height: 0;
+  transform: translateY(-100rem);
+  padding: 0 2rem;
+  margin: 0;
+}
+
+.delete-confirmation__btns {
+  display: flex;
+  justify-content: center;
+  gap: 1rem;
+}
+
+.delete-confirmation__btn {
+  font-family: inherit;
+  text-transform: uppercase;
+  font-weight: 600;
+  border: 1px solid var(--color-light--3);
+  border-radius: 0.5rem;
+  background-color: #fff;
+  color: var(--color-dark--2);
+  padding: 0.3rem 0.7rem;
+  display: flex;
+  align-items: center;
+  transition: opacity 0.3s;
+  cursor: pointer;
+}
+
+.delete-confirmation__btn:hover {
+  opacity: 0.7;
+}
+
+.delete-confirmation__btn-icon {
+  width: 1.7rem;
+  height: 1.7rem;
+  margin-right: 0.3rem;
+  margin-top: 0.5rem;
+}
+
+.delete-confirmation__btn-icon--yes {
+  color: var(--color-ok);
+}
+
+.delete-confirmation__btn-icon--no {
+  color: var(--color-error);
+}
+
+/*----- Form Error ------*/
+.form-error {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+  background-color: var(--color-error);
+  color: #fff;
+  padding: 2rem;
+  border-radius: 0.5rem;
+  visibility: visible;
+  opacity: 0.95;
+  transition: all 0.3s;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.form-error_title {
+  font-weight: 600;
+  margin-bottom: 1rem;
+  text-align: center;
+  font-size: 2rem;
+}
+
+.form-error .form__btn {
+  background-color: #fff;
+  text-transform: uppercase;
+  font-weight: 500;
+  border: 1px solid var(--color-light--3);
+  border-radius: 0.5rem;
+  color: var(--color-dark--2);
+  padding: 0.5rem 3rem;
+  cursor: pointer;
+}
+
+.form-error.hidden {
+  opacity: 0;
+  visibility: hidden;
+}
