@@ -35,10 +35,8 @@ JustDoIt is a *responsive app* that is possible to view using a browser on diffe
 As the app is fairly simple and can be upgraded to more functional project, I didn't add any tests for now. <br>
 But if to do so, I would do it using [TestRigor](https://testrigor.com/)
 
-## Credits
-I'm glad to say that all this hard work couldn't be possible without an amazing course by [Jonas Schmedtmann](https://twitter.com/jonasschmedtman), who puts a lot of effort to teach his students and give a high quality knowledge of programming.  
 ## License
 
 [MIT](https://github.com/wartelski/JustDoIt-App/blob/main/LICENSE) 
 <br>
-*The app was created only for learning purposes*
+*(The app was created only for learning purposes)*
