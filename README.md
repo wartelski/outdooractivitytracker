@@ -18,7 +18,7 @@ JustDoIt is a *responsive app* that is possible to view using a browser on diffe
 
 ## Installation
 
-``` git clone https://github.com/wartelski/JustDoIt-App.git ```
+``` git clone https://github.com/wartelski/outdooractivitytracker.git ```
 
 ## Tech Stack
 
